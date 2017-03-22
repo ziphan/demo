@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Sticky Footer</title>
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <style>
@@ -18,7 +18,7 @@
 
     .outer {
       position: relative;
-      margin: 60px auto 0;
+      margin: 50px auto 0;
       width: 320px;
       height: 500px;
       overflow: hidden;
@@ -118,9 +118,12 @@
   </div>
 </div>
 
+<script src="https://github.com/ziphan/demo/blob/gh-pages/github-corner.js"></script>
 <script src="https://cdn.bootcss.com/vue/2.2.4/vue.min.js"></script>
 <script>
-  var vm = new Vue({
+  githubCorner(`StickyFooter`);
+
+  new Vue({
     el: '#div',
     data: {
       count: 1,
