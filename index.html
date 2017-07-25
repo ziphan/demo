@@ -1,0 +1,84 @@
+
+    a {
+      color: #555;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: #ff001b;
+    }
+
+    h1, table {
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      border: solid #5182bb;
+      border-width: 1px 0;
+      text-align: left;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+
+    th {
+      background: #5182bb;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+<h1>Demo List</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Demo Page</th>
+    <th>Github</th>
+  </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+<script>
+
+  ajax('POST', 'list.json', data => {
+    let tbody = document.querySelector('tbody');
+    let demoBase = 'https://ziphan.github.io/demo/';
+    let githubBase = 'https://github.com/ziphan/demo/blob/gh-pages/';
+    let list = JSON.parse(data);
+
+    list = list.sort((v1, v2) => v1.localeCompare(v2));
+
+    for (let i of list) {
+      let _html = '<tr>' +
+        '<td><a href="' + demoBase + i + '.html">' + i + '</a></td>' +
+        '<td><a href="' + githubBase + i + '.html">' + i + '</a></td>' +
+        '</tr>';
+      tbody.innerHTML += _html;
+    }
+  });
+
+  function ajax(method, url, success, faild) {
+    let ajax = new XMLHttpRequest();
+    ajax.open(method, url, true);
+    ajax.send();
+    ajax.onreadystatechange = function () {
+      if (ajax.readyState == 4) {
+        if (ajax.status == 200) {
+          success(ajax.responseText);
+        } else {
+          faild(ajax.status);
+        }
+      }
+    }
+  }
+</script>
+</body>
+</html>

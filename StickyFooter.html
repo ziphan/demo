@@ -6,7 +6,7 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <style>
-    * {
+    #div * {
       margin: 0;
       padding: 0;
       font-size: 0;
@@ -101,7 +101,7 @@
 </head>
 <body>
 
-<div id="div">
+<div id="app">
   <div class="outer">
     <div class="buttons">
       <div @click="clear">Clear</div>
@@ -119,10 +119,11 @@
 </div>
 
 <script src="github-corner.js"></script>
+<script src="github-post.js"></script>
 <script src="https://cdn.bootcss.com/vue/2.2.4/vue.min.js"></script>
 <script>
   new Vue({
-    el: '#div',
+    el: '#app',
     data: {
       count: 1,
       texts: ['Text 1']

@@ -2,10 +2,15 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Range</title>
+  <title>Input Type</title>
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <style>
+    body{
+      overflow: auto;
+    }
     .wrap {
-      width: 450px;
+      width: 500px;
       padding: 40px 20px;
       margin: 100px auto 0;
       background: #eee;
@@ -25,7 +30,7 @@
 
     .box [type="text"], .box [type="email"], .box [type="url"], .box [type="number"], .box [type="color"], .box [type="date"], .box [type="month"], .box [type="week"], .box [type="time"], .box [type="datetime-local"] {
       margin-bottom: 10px;
-      width: 150px;
+      width: 200px;
     }
 
     .range-box {
@@ -131,7 +136,7 @@
         <input type="range" id="range" max="1000" min="300" value="300">
         <div>1000</div>
       </div>
-      <div>
+      <div class="range-btn">
         值：<span id="rangeValue"></span>
         <button id="enable">启用</button>
         <button id="disable">禁用</button>
@@ -141,25 +146,29 @@
 </div>
 
 <script src="github-corner.js"></script>
+<script src="github-post.js"></script>
 <script>
-  var range = document.getElementById('range'),
-    rangeValue = document.getElementById('rangeValue');
+  // color
+  let color = document.getElementById('color');
+  let colorValue = document.getElementById('colorValue');
+  color.onchange = () => colorValue.innerHTML = this.value;
+
+  // range
+  let range = document.getElementById('range');
+  let rangeValue = document.getElementById('rangeValue');
+  let rangeBtn = document.querySelector('.range-btn');
 
   rangeValue.innerHTML = range.value;
-  range.oninput = function () {
-    rangeValue.innerHTML = this.value;
-  }
+  range.oninput = () => rangeValue.innerHTML = this.value;
 
-  document.getElementById('enable').onclick = function () {
-    range.removeAttribute('disabled');
-  }
-  document.getElementById('disable').onclick = function () {
-    range.setAttribute('disabled', 'disabled');
-  }
-
-  document.getElementById('color').onchange = function () {
-    document.getElementById('colorValue').innerHTML = this.value;
-  }
+  rangeBtn.addEventListener('click', e => {
+    let id = e.target.id;
+    if (id == 'enable') {
+      range.removeAttribute('disabled');
+    } else if (id == 'disable') {
+      range.setAttribute('disabled', 'disabled');
+    }
+  });
 </script>
 </body>
 </html>
