@@ -1,7 +1,7 @@
 !function () {
   let a = document.createElement('a');
   let s = document.createElement('style');
-  let path = location.pathname;
+  let path = location.pathname.slice(0, -1);
   let fileName = path.substr(path.lastIndexOf('/') + 1);
   let param = {
     href: `https://github.com/ziphan/demo/tree/gh-pages/${fileName}`,
