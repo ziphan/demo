@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Dials</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header>
+    <div>
+      <a href="#" class="logo"></a>
+    </div>
+  </header>
+  <nav v-cloak="">
+    <div>
+      <ul>
+        <li>
+          <a>表盘下载</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <article v-cloak>
+    <aside>
+      <dl>
+        <dt><i></i>表盘分类</dt>
+        <dd v-for="(item,index) in aside"
+            :class="{current:navSelectedIndex==index}"
+            @click="navSelect(index)">{{ item }}
+        </dd>
+      </dl>
+    </aside>
+    <section>
+      <ul>
+        <li v-for="item in dials">
+          <div class="info">
+            <div href="#" class="avatar">
+              <img :src="item.avatar">
+            </div>
+            <div class="desc">
+              <p class="name">{{ item.name }}</p>
+              <span class="size">{{ item.size }}</span>
+              <span class="download">下载{{ item.times }}次</span>
+              <a class="buy" @click="showDetail(item)">获 取</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </article>
+  <div v-if="isLayerShow" class="layer" v-cloak>
+    <div class="pay-box">
+      <div class="inner-top">
+        <span>获取表盘 - {{ layerItem.name }}</span>
+        <a class="close" @click="isLayerShow=false"></a>
+      </div>
+      <div class="inner-box">
+        <div class="pay-detail">
+          <img :src="layerItem.avatar" class="pay-detail-pic">
+          <div class="pay-detail-txt">
+            <h3>{{ layerItem.name }}</h3>
+            <div class="pay-detail-data">
+              <div><em>文件大小</em><span class="size">{{ layerItem.size }}</span></div>
+              <div><em>下载次数</em><span class="times">{{ layerItem.times }} 次</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pay">
+          <div class="content">
+            <div class="top">
+              <a class="current">微信支付</a>
+            </div>
+            <div class="bottom">
+              <div class="main">
+                <div class="qr">
+                  <img src="http://op1ulolt8.bkt.clouddn.com/textTest.png" class="qr-pic">
+                  <div class="qr-txt">微信扫一扫支付</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+<script src="dials.js"></script>
+</body>
+</html>
