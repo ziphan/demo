@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Input Type</title>
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="box">
+  <img id="img" src="http://pic1.win4000.com/wallpaper/2/57e0fc465d511.jpg">
+  <p>
+    <button onclick="requestFullScreen(document.querySelector('img'))">图片全屏</button>
+    <button onclick="requestFullScreen(document.documentElement)">窗口全屏</button>
+    <button onclick="exitFullScreen()">退出全屏</button>
+  </p>
+</div>
+<script src="../github-corner.js"></script>
+<script src="../github-post.js"></script>
+<script src="fullScreen.js"></script>
+</body>
+</html>
+
+
