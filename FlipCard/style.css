@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+.card {
+  position: relative;
+  margin: 100px auto;
+  width: 170px;
+  height: 270px;
+}
+
+.card div {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition-duration: 2s;
+  transition-timing-function: ease;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card .front {
+  transform: rotate3d(0, 1, 0, 0deg);
+}
+
+.card .back {
+  transform: rotate3d(0, 1, 0, -900deg);
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
