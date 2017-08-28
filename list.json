@@ -3,6 +3,7 @@
   "FlipCard",
   "FloatPanel",
   "FullScreen",
+  "GetBase64",
   "InputType",
   "StickyFooter"
 ]

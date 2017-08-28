@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+h2 {
+  margin: 50px auto 20px;
+  max-width: 900px;
+}
+
+.box {
+  display: flex;
+  margin: 0 auto;
+  max-width: 800px;
+  height: 300px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.button-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #eee;
+}
+
+.button-box a {
+  display: block;
+  position: relative;
+  width: 80%;
+  line-height: 60px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  transition-duration: .1s;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.button-box a + a {
+  margin-top: 20px;
+}
+
+.button-box a.select {
+  background: #5eb95e;
+}
+
+.button-box a.select:hover {
+  background: #429842;
+}
+
+.button-box a.copy {
+  background: #3bb4f2;
+}
+
+.button-box a.copy:hover {
+  background: #0f9ae0;
+}
+
+.button-box a.view {
+  background: #dd514c;
+}
+
+.button-box a.view:hover {
+  background: #c62b26;
+}
+
+.button-box a.disabled, .button-box a.disabled:hover {
+  background: #aaa;
+  cursor: default;
+}
+
+.button-box a input {
+  position: absolute;
+  top: 0;
+  left: -300px;
+  width: 800px;
+  height: 60px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.result-box {
+  flex: 2;
+  display: block;
+  padding: 10px;
+  word-break: break-all;
+  overflow: auto;
+  border: 0;
+  border-right: 1px solid #ddd;
+  resize: none;
+}

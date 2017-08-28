@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Canvas</h2>
+<div class="box" id="forCanvas">
+  <textarea readonly class="result-box"></textarea>
+  <div class="button-box">
+    <a class="select">选择图片<input type="file"></a>
+    <a class="copy disabled">复制</a>
+    <a class="view disabled">查看</a>
+  </div>
+</div>
+
+<h2>FileReader</h2>
+<div class="box" id="forFileReader">
+  <textarea readonly class="result-box"></textarea>
+  <div class="button-box">
+    <a class="select">选择图片<input type="file"></a>
+    <a class="copy disabled">复制</a>
+    <a class="view disabled">查看</a>
+  </div>
+</div>
+
+
+<script src="../github-corner.js"></script>
+<script src="../github-post.js"></script>
+<script src="getBase64.js"></script>
+<script>
+  const forCanvas = document.getElementById('forCanvas');
+  const forFileReader = document.getElementById('forFileReader');
+  getBase64FromCanvas(forCanvas);
+  getBase64FromFileReader(forFileReader);
+</script>
+</body>
+</html>
