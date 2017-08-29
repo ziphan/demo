@@ -19,7 +19,7 @@ function getBase64FromCanvas(box) {
       result.value = url;
       setButtons(box, url);
     })
-  });
+  }, true);
 }
 
 function getBase64FromFileReader(box) {
@@ -47,13 +47,13 @@ function setButtons(box, url) {
     view.classList.remove('disabled');
   }
 
-  copy.addEventListener('click', () => {
+  copy.onclick = () => {
     const result = box.querySelector('.result-box');
     result.select();
     document.execCommand('copy');
     alert('URL 已复制成功，可粘贴');
-  });
-  view.addEventListener('click', () => {
+  };
+  view.onclick = () => {
     window.open(url);
-  })
+  }
 }
