@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+  <div id="demo"></div>
+  <script src="systemAlert.js"></script>
+  <script>
+  /**
+   * 系统提示窗口
+   * @param param:{
+   *
+   * ---必选---
+   *  obj: object                 窗口容器，容器标签需设置 id
+   *
+   * ---可选---
+   *  position: {x:'', y:''}      窗口位置，x(left, right) 为横向，y(top, bottom) 为纵向，默认 {x: 'right', y: 'bottom'}
+   *  width: num                  窗口放大时宽度，默认 650，
+   *  height: num                 窗口放大时宽度，默认 180，
+   *  originSize: 'max' OR 'min'  初始窗口尺寸，默认 'min'
+   *  header: string              窗口标题，默认 '消息提醒'
+   *  columns: array              表头，一维数组
+   *  data: array                 内容体，二维数组
+   *  fun:回调函数
+   *
+   * ---方法---
+   *  setTbody(data)              可以在回掉函数中使用这个方法更新内容体数据
+   * }
+   *
+   */
+
+  var demo = document.getElementById('demo')
+  var header = '系统消息提醒<input type="checkbox" checked="checked">开启报警声音 <button id="dataChange">更新数据</button>'
+  var columns = ['姓名', '电话', '组织架构', '告警地址', '告警状态', '告警时间']
+  var data1 = [
+    [1, 2, 3, 4, 5, 6],
+    [2, 3, 4, 5, 6, 7],
+    [3, 4, 5, 6, 7, 8],
+    [4, 5, 6, 7, 8, 9]
+  ]
+  var data2 = [
+    ['a', 'b', 'c', 'd', 'e', 'f'],
+    ['b', 'c', 'd', 'e', 'f', 'g']
+  ]
+
+  var sa = new SystemAlert({
+    obj: demo,
+    width: 850,
+    height: 200,
+    originSize: 'max',
+    header: header,
+    columns: columns,
+    data: data1,
+    fun: function() {
+      var btn = document.querySelector('#dataChange')
+      var flag = true
+      btn.onclick = function() {
+        if (flag) {
+          sa.setTbody(data2)
+        } else {
+          sa.setTbody(data1)
+        }
+        flag = !flag
+      }
+    },
+  })
+  </script>
+</body>
+
+</html>
