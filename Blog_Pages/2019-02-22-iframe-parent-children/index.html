@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Parent</title>
+    <style>
+      body {
+        text-align: center;
+      }
+      .control {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe name="child" src="demo-child.html"></iframe>
+    <div class="control">
+      <input id="colorSelector" type="color" onchange="callChild()" />
+    </div>
+
+    <script>
+      function callChild() {
+        // child.window.getChildElement().innerHTML = 'Color Changed';
+        const childHeader = child.window.document.querySelector('header');
+        childHeader.innerHTML = 'Color has been changed';
+        childHeader.style.color = document.querySelector(
+          '#colorSelector'
+        ).value;
+
+        child.window.changeColor();
+      }
+    </script>
+  </body>
+</html>

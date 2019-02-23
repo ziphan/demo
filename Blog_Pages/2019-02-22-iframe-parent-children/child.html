@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>Child</title>
+    <style>
+      header {
+        margin-top: 20px;
+        height: 40px;
+        text-align: center;
+      }
+      section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #colorBlock {
+        margin-right: 20px;
+        width: 60px;
+        height: 60px;
+        background-color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <header>Change the color</header>
+    <section>
+      <div id="colorBlock"></div>
+      <div id="colorValue">#000000</div>
+    </section>
+    <script>
+      function changeColor() {
+        const colorBlock = document.querySelector('#colorBlock');
+        const colorValue = document.querySelector('#colorValue');
+        const color = window.parent.document.querySelector('#colorSelector')
+          .value;
+        colorBlock.style.backgroundColor = color;
+        colorValue.innerHTML = color;
+      }
+    </script>
+  </body>
+</html>
