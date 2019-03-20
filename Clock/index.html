@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Preview</title>
+    <style>
+      .preview,
+      .preview-layer,
+      .preview-pointer {
+        margin: 0;
+        padding: 0;
+      }
+      .preview {
+        padding: 20px;
+        width: 160px;
+        box-sizing: border-box;
+      }
+      .preview-layer {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        border: 1px solid #000;
+        border-radius: 50%;
+      }
+
+      .preview-pointer {
+        display: block;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .preview-time {
+        margin-top: 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="preview">
+      <div class="preview-layer">
+        <img class="preview-pointer" data-type="h" src="h.png" />
+        <img class="preview-pointer" data-type="m" src="m.png" />
+        <img class="preview-pointer" data-type="s" src="s.png" />
+      </div>
+      <div class="preview-time"></div>
+    </div>
+    <script>
+      const preview = {
+        pointers: Array.from(document.querySelectorAll('.preview-pointer')),
+        active() {
+          const now = new Date();
+          const zero0 = new Date(`${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()} 00:00:00`).getTime()
+          const zero1 = new Date(`${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()} 12:00:00`).getTime()
+          const hms = [now.getHours(), now.getMinutes(), now.getSeconds()];
+          this.pointers.forEach((item, index) => {
+            let angle;
+            if (item.dataset.type == 'h') {
+              angle =
+                hms[index] < 12
+                  ? (360 * (now.getTime()-zero0)) / 43200000
+                  : (360 * (now.getTime()-zero1)) / 43200000;
+            } else {
+              angle = (360 * hms[index]) / 60;
+            }
+            item.style.transform = `translateX(-50%) rotate(${angle}deg)`;
+          });
+
+          const timeFormat = {
+            h: hms[0] > 9 ? hms[0] : '0' + hms[0],
+            m: hms[1] > 9 ? hms[1] : '0' + hms[1],
+            s: hms[2] > 9 ? hms[2] : '0' + hms[2]
+          };
+          document.querySelector('.preview-time').innerHTML = `${
+            timeFormat.h
+          }:${timeFormat.m}:${timeFormat.s}`;
+        }
+      };
+
+      preview.active();
+      setInterval(() => {
+        preview.active();
+      }, 1000);
+    </script>
+  </body>
+</html>
